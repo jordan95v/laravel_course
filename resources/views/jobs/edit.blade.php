@@ -20,7 +20,7 @@
                 <label class="label pt-0">
                     <span class="label-text ">Select a new gig image if you want (below is current image)</span>
                 </label>
-                <img src="{{ asset('storage/' . $job->image) }}" class="rounded max-w-lg pt-0 shadow-lg mb-4"
+                <img src="{{ asset('storage/' . $job->image) }}" class="rounded max-w-lg w-full pt-0 shadow-lg mb-4"
                     alt="">
 
                 {{-- Company --}}
@@ -47,7 +47,7 @@
 
                 {{-- Confirm button --}}
                 <div class="flex justify-center">
-                    <button class="btn bg-purple-700 w-3/5 mt-2 hover:bg-purple-900">Create</button>
+                    <button class="btn bg-purple-700 w-3/5 mt-2 hover:bg-purple-900">Update gig</button>
                 </div>
 
             </form>

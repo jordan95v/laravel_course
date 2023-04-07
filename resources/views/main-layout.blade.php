@@ -16,11 +16,14 @@
     {{-- Navbar --}}
     <x-navbar />
 
-    {{-- Alerts --}}
-    <x-alerts />
 
-    {{-- Main content --}}
-    @yield('content')
+    <div class="md:p-0 p-5">
+        {{-- Alerts --}}
+        <x-alerts />
+
+        {{-- Main content --}}
+        @yield('content')
+    </div>
 </body>
 
 </html>
