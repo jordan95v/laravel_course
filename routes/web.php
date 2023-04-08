@@ -36,3 +36,8 @@ Route::get("jobs/{job}", [JobsController::class, "show"]);
 // Create user
 Route::get("/register", [UserController::class, "create"]);
 Route::post("/users", [UserController::class, "store"]);
+
+// Login / Logout
+Route::get("/login", [UserController::class, "showLogin"]);
+Route::post("/login", [UserController::class, "login"]);
+Route::get("/logout", [UserController::class, "logout"]);

@@ -20,7 +20,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view("users.create");
+        return view("users.register");
     }
 
     /**
@@ -69,5 +69,32 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         //
+    }
+
+    public function showLogin()
+    {
+        return view("users.login");
+    }
+
+    public function login(Request $request)
+    {
+        $form = $request->validate([
+            "email" => ["required", "email"],
+            "password" => "required"
+        ]);
+
+        if (auth()->attempt($form)) {
+            $request->session()->regenerate();
+            return redirect("/")->with("success", "You have succefully logged in :)");
+        }
+        return back()->with("error", "Invalid credentials");
+    }
+
+    public function logout(Request $request)
+    {
+        auth()->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect("/")->with("success", "You have successfully logged out");
     }
 }
