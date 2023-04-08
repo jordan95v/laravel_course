@@ -15,12 +15,12 @@
         <a href="/jobs/{{ $job->id }}" class="text-3xl hover:text-purple-700">{{ $job->title }}</a>
         <div>
             <b>{{ $job->company }}</b> - <a href="mailto:{{ $job->company_email }}"
-                class="italic text-purple-700">{{ $job->company_email }}</a>
+                class="italic link text-purple-700">{{ $job->company_email }}</a>
         </div>
         <div class="mb-5">
             @foreach ($tags as $tag)
                 <a href="/?tags={{ $tag }}">
-                    <button class="btn">{{ $tag }}</button>
+                    <button class="btn me-2">{{ $tag }}</button>
                 </a>
             @endforeach
         </div>

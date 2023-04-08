@@ -10,6 +10,7 @@
             <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                 <li><a href="/">Homepage</a></li>
                 <li><a href="/jobs/create">Create a gig</a></li>
+                <li><a href="/register">Register</a></li>
             </ul>
         </div>
     </div>

@@ -1,14 +1,14 @@
-@props(['name', 'hint', 'error', 'job'])
+@props(['name', 'type', 'hint', 'error', 'target'])
 
 @php
-    if (isset($job)) {
-        $value = $job[$name];
+    if (isset($target)) {
+        $value = $target[$name];
     } else {
         $value = old($name);
     }
 @endphp
 
-<input type="text" name="{{ $name }}" placeholder="{{ $hint }}"
+<input type="{{ $type }}" name="{{ $name }}" placeholder="{{ $hint }}"
     class="input input-bordered border-2 w-full hover:border-purple-700" value="{{ $value }}" />
 
 @if ($error == '1')

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\JobsController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,12 +15,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/home', 'home');
 
-// Show all.
+// Show all
 Route::get('/', [JobsController::class, "index"]);
 
-// Create.
+// Create
 Route::get("jobs/create", [JobsController::class, "create"]);
 Route::post("jobs/", [JobsController::class, "store"]);
 
@@ -32,3 +32,7 @@ Route::delete("jobs/{job}", [JobsController::class, "destroy"]);
 
 // Show single
 Route::get("jobs/{job}", [JobsController::class, "show"]);
+
+// Create user
+Route::get("/register", [UserController::class, "create"]);
+Route::post("/users", [UserController::class, "store"]);
