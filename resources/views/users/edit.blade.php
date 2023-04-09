@@ -24,9 +24,27 @@
                 @enderror
 
                 <button class="btn mt-4 bg-purple-700 hover:bg-purple-900">Update my account</button>
+                <!-- Open delete modal -->
+                <label for="delete-modal" class="btn btn-error"><i class="fa-solid fa-trash me-2"></i>Delete account</label>
                 <div class="divider"></div>
                 <p class="text-center">Forgot your password ? <a href="" class="link">Click here</a></p>
+            </form>
+        </div>
+    </div>
 
+    <!-- Delete modal -->
+    <input type="checkbox" id="delete-modal" class="modal-toggle" />
+    <div class="modal modal-bottom sm:modal-middle">
+        <div class="modal-box">
+            <form action="/users/{{ $user->id }}" method="post">
+                @csrf
+                @method('DELETE')
+                <label for="delete-modal" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                <h3 class="font-bold text-lg mb-4">Are you sure you wanna delete this account ?</h3>
+
+                <div class="flex justify-center">
+                    <button class="btn btn-error w-3/5"><i class="fa-solid fa-trash me-2"></i>Delete account</button>
+                </div>
             </form>
         </div>
     </div>

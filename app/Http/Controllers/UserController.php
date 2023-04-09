@@ -87,9 +87,11 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(User $user)
+    public function destroy(Request $request, User $user)
     {
-        //
+        $this->logoutUser($request);
+        $user->delete();
+        return redirect("/")->with("success", "Account successfully deleted");
     }
 
     public function showLogin()
@@ -113,9 +115,14 @@ class UserController extends Controller
 
     public function logout(Request $request)
     {
+        $this->logoutUser($request);
+        return redirect("/")->with("success", "You have successfully logged out");
+    }
+
+    public function logoutUser(Request $request)
+    {
         auth()->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect("/")->with("success", "You have successfully logged out");
     }
 }

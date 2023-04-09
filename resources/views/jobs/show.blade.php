@@ -42,7 +42,7 @@
                     <h3 class="font-bold text-lg mb-4">Are you sure you wanna delete this gig ?</h3>
 
                     <div class="flex justify-center">
-                        <button class="btn btn-error w-3/5"><i class="fa-solid fa-trash me-2"></i>Deletegig</button>
+                        <button class="btn btn-error w-3/5"><i class="fa-solid fa-trash me-2"></i>Delete gig</button>
                     </div>
                 </form>
             </div>

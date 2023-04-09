@@ -40,6 +40,7 @@ Route::post("/users", [UserController::class, "store"]);
 // Update user
 Route::get("/users/{user}/edit", [UserController::class, "edit"]);
 Route::put("/users/{user}", [UserController::class, "update"]);
+Route::delete("/users/{user}", [UserController::class, "destroy"]);
 
 // Login / Logout
 Route::get("/login", [UserController::class, "showLogin"]);
