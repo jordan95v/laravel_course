@@ -43,6 +43,7 @@ class JobsController extends Controller
             $form["image"] = $request->file("image")->store("logos", "public");
         }
 
+        $form["user_id"] = auth()->id();
         Jobs::create($form);
 
         return redirect("/jobs/create")->with("success", "The job have been created :)");

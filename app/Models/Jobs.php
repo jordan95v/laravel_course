@@ -12,11 +12,12 @@ class Jobs extends Model
 
     protected $fillable = [
         "title",
+        "user_id",
         "company",
         "company_email",
         "tags",
         "description",
-        "image"
+        "image",
     ];
 
     public function scopeFilter(Builder $query, array $filters)

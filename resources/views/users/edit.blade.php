@@ -10,7 +10,7 @@
             <form action="/users/{{ $user->id }}" method="post" class="card-body">
                 @csrf
                 @method('put')
-                <h2 class="card-title flex justify-center text-2xl pb-2">Register now !</h2>
+                <h2 class="card-title flex justify-center text-2xl pb-2">Edit your account !</h2>
 
                 <x-form-input name="name" type="text" hint="Chnage your username" error="1" :target="$user" />
                 <x-form-input name="email" type="email" hint="Enter your email" error="1" :target="$user" />
