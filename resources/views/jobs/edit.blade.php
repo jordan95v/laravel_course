@@ -51,7 +51,6 @@
                 <div class="flex justify-center">
                     <button class="btn bg-purple-700 w-3/5 mt-2 hover:bg-purple-900">Update gig</button>
                 </div>
-
             </form>
         </div>
     </div>

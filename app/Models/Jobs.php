@@ -33,4 +33,9 @@ class Jobs extends Model
                 ->orWhere("description", "like", "%$filter%");
         }
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

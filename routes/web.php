@@ -19,6 +19,9 @@ use Illuminate\Support\Facades\Route;
 // Show all
 Route::get('/', [JobsController::class, "index"]);
 
+// Manage listings
+Route::get("jobs/manage", [JobsController::class, "manage"])->middleware("auth");
+
 // Create
 Route::get("jobs/create", [JobsController::class, "create"])->middleware("auth");
 Route::post("jobs/", [JobsController::class, "store"])->middleware("auth");

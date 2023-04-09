@@ -94,6 +94,11 @@ class JobsController extends Controller
     public function destroy(Jobs $job)
     {
         $job->delete();
-        return redirect("/")->with("success", "The job have been deleted :(");
+        return redirect("/jobs/manage")->with("success", "The job have been deleted :(");
+    }
+
+    public function manage()
+    {
+        return view("jobs.manage", ["jobs" => auth()->user()->jobs]);
     }
 }

@@ -12,7 +12,7 @@
                 @auth
                     <li><a href="/users/{{ auth()->user()->id }}/edit">Edit account</a></li>
                     <li><a href="/jobs/create">Create a gig</a></li>
-                    <li><a href="">Manage gig</a></li>
+                    <li><a href="/jobs/manage">Manage gig</a></li>
                     <li><a href="/logout">Disconnect</a></li>
                 @else
                     <li><a href="/register">Register</a></li>
