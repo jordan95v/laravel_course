@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
@@ -29,8 +30,8 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $form = $request->validate([
-            "name" => ["required", "min:4"],
-            "email" => ["required", "email"],
+            "name" => ["required", "min:4",  Rule::unique("users", "name")],
+            "email" => ["required", "email", Rule::unique("users", "email")],
             "password" => ["required", "confirmed", "min:6"]
         ]);
 
@@ -52,7 +53,10 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        if (auth()->user()->id != $user->id) {
+            return redirect("/")->with("error", "You cannot do that");
+        }
+        return view('users.edit', ["user" => $user]);
     }
 
     /**
@@ -60,7 +64,24 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        if (auth()->user()->id != $user->id) {
+            return redirect("/")->with("error", "You are not allowed to do this");
+        }
+
+        $form = $request->validate([
+            "name" => "required|unique:users,name,$user->id",
+            "email" => "required|unique:users,email,$user->id",
+        ]);
+
+
+        if ($request["password"] != null) {
+            $request->validate([
+                "password" => "confirmed|min:6"
+            ]);
+            $form["password"] = bcrypt($request["password"]);
+        }
+        $user->update($form);
+        return redirect("/users/$user->id/edit")->with("success", "You succefully edited your profile");
     }
 
     /**

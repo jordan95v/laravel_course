@@ -37,6 +37,10 @@ Route::get("jobs/{job}", [JobsController::class, "show"]);
 Route::get("/register", [UserController::class, "create"]);
 Route::post("/users", [UserController::class, "store"]);
 
+// Update user
+Route::get("/users/{user}/edit", [UserController::class, "edit"]);
+Route::put("/users/{user}", [UserController::class, "update"]);
+
 // Login / Logout
 Route::get("/login", [UserController::class, "showLogin"]);
 Route::post("/login", [UserController::class, "login"]);

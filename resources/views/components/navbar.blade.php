@@ -10,6 +10,7 @@
             <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                 <li><a href="/">Homepage</a></li>
                 @auth
+                    <li><a href="/users/{{ auth()->user()->id }}/edit">Edit account</a></li>
                     <li><a href="/jobs/create">Create a gig</a></li>
                     <li><a href="">Manage gig</a></li>
                     <li><a href="/logout">Disconnect</a></li>
