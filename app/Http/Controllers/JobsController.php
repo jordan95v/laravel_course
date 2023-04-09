@@ -62,6 +62,7 @@ class JobsController extends Controller
      */
     public function edit(Jobs $job)
     {
+        $this->authorize('update', $job);
         return view("jobs.edit", ["job" => $job]);
     }
 
@@ -70,6 +71,7 @@ class JobsController extends Controller
      */
     public function update(UpdateJobsRequest $request, Jobs $job)
     {
+        $this->authorize('update', $job);
         $form = $request->validate([
             "title" => "required",
             "company" => ["required"],
@@ -93,6 +95,7 @@ class JobsController extends Controller
      */
     public function destroy(Jobs $job)
     {
+        $this->authorize('update', $job);
         $job->delete();
         return redirect("/jobs/manage")->with("success", "The job have been deleted :(");
     }

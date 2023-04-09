@@ -35,9 +35,9 @@ class JobsPolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, Jobs $jobs): bool
+    public function update(User $user, Jobs $job): bool
     {
-        //
+        return $job->user == $user;
     }
 
     /**
@@ -45,7 +45,7 @@ class JobsPolicy
      */
     public function delete(User $user, Jobs $jobs): bool
     {
-        //
+        return $job->user == $user;
     }
 
     /**
