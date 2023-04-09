@@ -54,7 +54,7 @@ class UserController extends Controller
     public function edit(User $user)
     {
         if (auth()->user()->id != $user->id) {
-            return redirect("/")->with("error", "You cannot do that");
+            return redirect("/")->with("error", "You are not allowed to do this");
         }
         return view('users.edit', ["user" => $user]);
     }
@@ -67,7 +67,6 @@ class UserController extends Controller
         if (auth()->user()->id != $user->id) {
             return redirect("/")->with("error", "You are not allowed to do this");
         }
-
         $form = $request->validate([
             "name" => "required|unique:users,name,$user->id",
             "email" => "required|unique:users,email,$user->id",
@@ -76,7 +75,7 @@ class UserController extends Controller
 
         if ($request["password"] != null) {
             $request->validate([
-                "password" => "confirmed|min:6"
+                "password" => "confirmed,min:6"
             ]);
             $form["password"] = bcrypt($request["password"]);
         }
@@ -89,6 +88,9 @@ class UserController extends Controller
      */
     public function destroy(Request $request, User $user)
     {
+        if (auth()->user()->id != $user->id) {
+            return redirect("/")->with("error", "You are not allowed to do this");
+        }
         $this->logoutUser($request);
         $user->delete();
         return redirect("/")->with("success", "Account successfully deleted");

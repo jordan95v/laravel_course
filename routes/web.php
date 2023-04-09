@@ -20,29 +20,29 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [JobsController::class, "index"]);
 
 // Create
-Route::get("jobs/create", [JobsController::class, "create"]);
-Route::post("jobs/", [JobsController::class, "store"]);
+Route::get("jobs/create", [JobsController::class, "create"])->middleware("auth");
+Route::post("jobs/", [JobsController::class, "store"])->middleware("auth");
 
 // Update
-Route::get("jobs/{job}/edit", [JobsController::class, "edit"]);
-Route::put("jobs/{job}", [JobsController::class, "update"]);
+Route::get("jobs/{job}/edit", [JobsController::class, "edit"])->middleware("auth");
+Route::put("jobs/{job}", [JobsController::class, "update"])->middleware("auth");
 
 // Destroy
-Route::delete("jobs/{job}", [JobsController::class, "destroy"]);
+Route::delete("jobs/{job}", [JobsController::class, "destroy"])->middleware("auth");
 
 // Show single
 Route::get("jobs/{job}", [JobsController::class, "show"]);
 
 // Create user
-Route::get("/register", [UserController::class, "create"]);
+Route::get("/register", [UserController::class, "create"])->middleware("guest");
 Route::post("/users", [UserController::class, "store"]);
 
 // Update user
-Route::get("/users/{user}/edit", [UserController::class, "edit"]);
-Route::put("/users/{user}", [UserController::class, "update"]);
-Route::delete("/users/{user}", [UserController::class, "destroy"]);
+Route::get("/users/{user}/edit", [UserController::class, "edit"])->middleware("auth");
+Route::put("/users/{user}", [UserController::class, "update"])->middleware("auth");
+Route::delete("/users/{user}", [UserController::class, "destroy"])->middleware("auth");
 
 // Login / Logout
-Route::get("/login", [UserController::class, "showLogin"]);
+Route::get("/login", [UserController::class, "showLogin"])->name("login")->middleware("guest");
 Route::post("/login", [UserController::class, "login"]);
-Route::get("/logout", [UserController::class, "logout"]);
+Route::get("/logout", [UserController::class, "logout"])->middleware("auth");
